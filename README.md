@@ -1,5 +1,4 @@
 ### Installation
-
 This demo expects that you have the whole server stack (Linux, Apache, MySQL, PHP) installed on your machine.
 
 ##### Requiremenets
@@ -18,7 +17,6 @@ composer dump-autoload --optimize
 Copy configuration file (`.ENV`) and fill the credentials. First of all the *database*. Other follows the "Convention over configuration" design paradigm.
 It's recommend to use *Environment variables* as primary configuration, but fell free to use local configs like *yaml* for development purpose.
 
-
  ```bash
  cp .env.dist /.env
  ```
@@ -32,6 +30,12 @@ It's recommend to use *Environment variables* as primary configuration, but fell
 - Use some verified bundle for API ([FOSRestBundle](https://github.com/FriendsOfSymfony/FOSRestBundle)) due `DRTW`
 - Create components from GUI parts (navigation, form, ...)
 - Create two bundles
+
+##### Contributing
+You can take a part. Before committing any changes, don't forget to run
+```
+vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --dry-run
+```
 
 ---
 

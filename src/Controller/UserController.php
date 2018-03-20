@@ -12,6 +12,7 @@ use App\Form\UserSignUpForm;
 use App\Service\Api\UserClient;
 use App\Utils\FlashType;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use Nette\Utils\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
@@ -72,8 +73,17 @@ class UserController extends Controller
         ]);
     }
 
-    public function userList(Request $request): Response
+    /**
+     * @param int $page
+     * @param UserClient $userClient
+     * @return Response
+     */
+    public function userList(int $page = 1, UserClient $userClient): Response
     {
-        return $this->render('user/list.html.twig');
+        $users = $userClient->userList($page);
+
+        return $this->render('user/list.html.twig', [
+            'users' => $users,
+        ]);
     }
 }

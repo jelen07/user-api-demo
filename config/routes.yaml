@@ -7,8 +7,12 @@ createUser:
     controller: App\Controller\UserController::createUser
 
 userList:
-    path: /user-list
+    path: /user-list/{page}
     controller: App\Controller\UserController::userList
+    defaults:
+        page: 1
+    requirements:
+        page: '\d+'
 
 apiList:
     path: /api-list
@@ -30,6 +34,10 @@ userListApi:
         page: 1
     requirements:
         page: '\d+'
+
+userListAllApi:
+    path: /api/v1/userListAll
+    controller: App\AppBundle\API\v1\UserController::userListAll
 
 #api:
 #    resource: '@AppBundle/Controller/'

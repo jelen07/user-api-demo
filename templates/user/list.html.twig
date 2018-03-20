@@ -3,6 +3,32 @@
 {% block body %}
 
     <h2>{% block title %}User List{% endblock %}</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+            <th scope="col">Role</th>
+            <th scope="col">Created</th>
+            <th scope="col">Updated</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.getName() }}</td>
+                <td><a href="mailto:{{ user.getEmail() }}">{{ user.getEmail() }}</a></td>
+                <td>{{ user.getPassword()|slice(7,7) }}...</td>
+                <td><span class="badge badge-{{ user.getRole() == 'admin' ? 'danger' : 'secondary' }}">{{ user.getRole() }}</span></td>
+                <td title="{{ user.getCreated()|date('H:i:s') }}">{{ user.getCreated()|date('d.m.Y') }}</td>
+                <td title="{{ user.getCreated()|date('H:i:s') }}">{{ user.getUpdated()|date('d.m.Y') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
     <a href="{{ path('index') }}">&laquo; Home</a>
 
 {% endblock %}

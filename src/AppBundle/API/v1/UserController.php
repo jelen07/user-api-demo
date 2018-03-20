@@ -14,11 +14,14 @@ use App\Exception\InvalidArgumentException;
 use App\Service\IRoleFactory;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use JMS\Serializer\Serializer;
+use JMS\Serializer\SerializerInterface;
 use Nette\Utils\Json;
 use Nette\Utils\JsonException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class UserController
@@ -26,6 +29,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class UserController extends Controller
 {
+    const PAGE_SIZE = 20;
+
     /**
      * @Route("/api/v1/createUser")
      * @Method("POST")
@@ -69,7 +74,7 @@ class UserController extends Controller
             $message = $e->getMessage();
         }
 
-        return new JsonResponse(new Status($status, $message), 200, [], true);
+        return new JsonResponse(new Status($status, $message), Response::HTTP_OK, [], true);
     }
 
     /**
@@ -78,23 +83,23 @@ class UserController extends Controller
      */
     public function actionDelete(Request $request): JsonResponse
     {
-        // ...
+        // @todo
     }
 
     /**
      * @Route("/api/v1/userCount")
      * @Method("POST")
      *
-     * @return JsonResponse
+     * @return Response
      */
     public function userCount(): JsonResponse
     {
         $userRepository = $this->getDoctrine()->getRepository(User::class);
         $count = $userRepository->getTotalCount();
 
-        return new JsonResponse(Json::encode([
+        return new JsonResponse([
             'count' => $count,
-        ]));
+        ]);
     }
 
     /**
@@ -102,14 +107,14 @@ class UserController extends Controller
      * @Method("POST")
      *
      * @param int $page
-     * @return JsonResponse
+     * @return Response
      */
-    public function userList(int $page = 1): JsonResponse
+    public function userList(int $page = 1, SerializerInterface $serializer): Response
     {
         /**
          * @var $paginator Paginator
          */
-        $paginator = $this->getDoctrine()->getRepository(User::class)->getPaginator($page);
+        $paginator = $this->getDoctrine()->getRepository(User::class)->getPaginator($page, self::PAGE_SIZE);
         $count = count($paginator);
 
         /**
@@ -120,12 +125,33 @@ class UserController extends Controller
             $users[] = $user;
         }
 
-        $serializer = $this->get('jms_serializer');
-        $json = $serializer->serialize([
+        $data = [
             'count' => $count,
+            'size' => self::PAGE_SIZE,
             'users' => $users,
-        ], 'json');
+        ];
 
-        return new JsonResponse($json);
+        return new Response($serializer->serialize($data, 'json'), Response::HTTP_OK, [
+            'Content-Type' => 'application:json',
+        ]);
+    }
+
+    /**
+     * This method SHOULD NOT be called in production.
+     *
+     * @param SerializerInterface $serializer
+     * @return Response
+     */
+    public function userListAll(SerializerInterface $serializer): Response
+    {
+        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
+        $data = [
+            'count' => count($users),
+            'users' => $users,
+        ];
+
+        return new Response($serializer->serialize($data, 'json'), Response::HTTP_OK, [
+            'Content-Type' => 'application:json',
+        ]);
     }
 }

@@ -2,10 +2,6 @@ index:
     path: /
     controller: App\Controller\HomepageController::actionDefault
 
-lucy_number:
-    path: /lucky/number
-    controller: App\Controller\LuckyController::actionDefault
-
 userCreate:
     path: /user/create
     controller: App\Controller\UserController::actionDefault

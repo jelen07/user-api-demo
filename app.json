@@ -1,0 +1,13 @@
+{
+    "name": "jelen07/user-api-demo",
+    "description": "A simple application using REST API",
+    "repository": "https://github.com/jelen07/user-api-demo.git",
+    "logo": "https://image.flaticon.com/icons/svg/180/180644.svg",
+    "keywords": ["php", "symfony", "framework", "skeleton", "rest", "api"],
+    "addons": [
+        "cleardb:ignite"
+    ],
+    "env": {
+      "APP_ENV": "dev"
+    }
+}

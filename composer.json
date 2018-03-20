@@ -23,6 +23,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.10",
+        "heroku/heroku-buildpack-php": "^132.0",
         "symfony/dotenv": "^4.0"
     },
     "config": {
@@ -53,6 +54,7 @@
             "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
+            "cp .env.dist .env",
             "@auto-scripts"
         ],
         "post-update-cmd": [

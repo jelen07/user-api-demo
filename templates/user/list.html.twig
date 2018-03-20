@@ -9,7 +9,7 @@
         <tr>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <th scope="col">Password</th>
+            <th scope="col">Password</th>{# Just for @demo #}
             <th scope="col">Role</th>
             <th scope="col">Created</th>
             <th scope="col">Updated</th>
@@ -20,7 +20,7 @@
             <tr>
                 <td>{{ user.getName() }}</td>
                 <td><a href="mailto:{{ user.getEmail() }}">{{ user.getEmail() }}</a></td>
-                <td>{{ user.getPassword()|slice(7,7) }}...</td>
+                <td>{{ user.getPassword()|slice(7,7) }}...</td>{# Just for @demo #}
                 <td><span class="badge badge-{{ user.getRole() == 'admin' ? 'danger' : 'secondary' }}">{{ user.getRole() }}</span></td>
                 <td title="{{ user.getCreated()|date('H:i:s') }}">{{ user.getCreated()|date('d.m.Y') }}</td>
                 <td title="{{ user.getCreated()|date('H:i:s') }}">{{ user.getUpdated()|date('d.m.Y') }}</td>

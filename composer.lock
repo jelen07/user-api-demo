@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e74e990f990a2c527a941db0302cbbde",
+    "content-hash": "f371e5cc5d6cb10093fb08b2a0aa660c",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -4844,6 +4844,50 @@
             ],
             "description": "A tool to automatically fix PHP code style",
             "time": "2018-03-08T11:13:12+00:00"
+        },
+        {
+            "name": "heroku/heroku-buildpack-php",
+            "version": "v132",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/heroku/heroku-buildpack-php.git",
+                "reference": "dd950a605fb0c5e50ab71774e299fa26c9093f80"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/dd950a605fb0c5e50ab71774e299fa26c9093f80",
+                "reference": "dd950a605fb0c5e50ab71774e299fa26c9093f80",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/heroku-hhvm-apache2",
+                "bin/heroku-hhvm-nginx",
+                "bin/heroku-php-apache2",
+                "bin/heroku-php-nginx"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Zuelke",
+                    "email": "dz@heroku.com"
+                }
+            ],
+            "description": "Toolkit for starting a PHP application locally, with or without foreman, using the same config for PHP/HHVM and Apache2/Nginx as on Heroku",
+            "homepage": "https://github.com/heroku/heroku-buildpack-php",
+            "keywords": [
+                "apache",
+                "apache2",
+                "foreman",
+                "heroku",
+                "hhvm",
+                "nginx",
+                "php"
+            ],
+            "time": "2018-03-02T17:10:10+00:00"
         },
         {
             "name": "php-cs-fixer/diff",

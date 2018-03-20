@@ -1,4 +1,9 @@
-### Installation
+# Installation
+
+You have several options:
+1. Deploy to Heroku (the easiest) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+1. Install manualy
+
 This demo expects that you have the whole server stack (Linux, Apache, MySQL, PHP) installed on your machine.
 
 ##### Requiremenets
@@ -30,6 +35,8 @@ It's recommend to use *Environment variables* as primary configuration, but fell
 - Use some verified bundle for API ([FOSRestBundle](https://github.com/FriendsOfSymfony/FOSRestBundle)) due `DRTW`
 - Create components from GUI parts (navigation, form, ...)
 - Create two bundles
+- Write some tests
+- Add user fixtures
 
 ##### Contributing
 You can take a part. Before committing any changes, don't forget to run

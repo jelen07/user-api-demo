@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Type;
 use Nette\Security\IRole;
 
 /**
@@ -21,6 +22,7 @@ class User
 
     /**
      * @ORM\Column(type="name", length=25)
+     * @Type("App\Entity\Name")
      *
      * @var string
      */
@@ -28,6 +30,7 @@ class User
 
     /**
      * @ORM\Column(type="email", length=255, unique=true)
+     * @Type("App\Entity\Email")
      *
      * @var Email
      */
@@ -35,6 +38,7 @@ class User
 
     /**
      * @ORM\Column(type="password", length=255)
+     * @Type("App\Entity\Password")
      *
      * @var string
      */
@@ -42,6 +46,7 @@ class User
 
     /**
      * @ORM\Column(type="role", length=10)
+     * @Type("App\Entity\Role")
      *
      * @var IRole
      */

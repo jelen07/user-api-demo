@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Nette\Security\IRole;
+use JMS\Serializer\Annotation\Type;
 
 class Role implements IRole
 {
@@ -15,6 +16,7 @@ class Role implements IRole
     ];
 
     /**
+     * @Type("string")
      * @var string
      */
     protected $id;

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Exception\InvalidArgumentException;
+use JMS\Serializer\Annotation\Type;
 use Nette\Utils\Validators;
 
 /**
@@ -14,6 +15,7 @@ use Nette\Utils\Validators;
 class Email
 {
     /**
+     * @Type("string")
      * @var string
      */
     private $email;

@@ -5,10 +5,16 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Nette\Security\Passwords;
+use JMS\Serializer\Annotation\Type;
 
+/**
+ * Class Password
+ * @package App\Entity
+ */
 class Password
 {
     /**
+     * @Type("string")
      * @var string
      */
     private $password;

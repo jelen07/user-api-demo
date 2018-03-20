@@ -5,10 +5,16 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Exception\InvalidArgumentException;
+use JMS\Serializer\Annotation\Type;
 
+/**
+ * Class Name
+ * @package App\Entity
+ */
 class Name
 {
     /**
+     * @Type("string")
      * @var string
      */
     private $name;

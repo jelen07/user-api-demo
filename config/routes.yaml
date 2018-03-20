@@ -1,0 +1,35 @@
+index:
+    path: /
+    controller: App\Controller\HomepageController::actionDefault
+
+lucy_number:
+    path: /lucky/number
+    controller: App\Controller\LuckyController::actionDefault
+
+userCreate:
+    path: /user/create
+    controller: App\Controller\UserController::actionDefault
+
+userList:
+    path: /user/list
+    controller: App\Controller\UserListController::actionDefault
+
+userApi:
+    path: /api/v1/user
+    controller: App\AppBundle\API\v1\UserController::actionNew
+
+userCount:
+    path: /api/v1/userCount
+    controller: App\AppBundle\API\v1\UserController::actionUserCount
+
+userListApi:
+    path: /api/v1/userList/{page}
+    controller: App\AppBundle\API\v1\UserController::actionUserList
+    defaults:
+        page: 1
+    requirements:
+        page: '\d+'
+
+#api:
+#    resource: '@AppBundle/Controller/'
+#    type: annotation

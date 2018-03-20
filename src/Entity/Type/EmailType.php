@@ -19,7 +19,6 @@ class EmailType extends StringType
     /**
      * @param mixed $value
      * @param AbstractPlatform $platform
-     *
      * @return Email
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): Email
@@ -30,7 +29,6 @@ class EmailType extends StringType
     /**
      * @param mixed $value
      * @param AbstractPlatform $platform
-     *
      * @return string
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): string

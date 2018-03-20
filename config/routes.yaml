@@ -1,26 +1,31 @@
 index:
     path: /
-    controller: App\Controller\HomepageController::actionDefault
+    controller: App\Controller\HomepageController::default
 
-userCreate:
-    path: /user/create
-    controller: App\Controller\UserController::actionDefault
+createUser:
+    path: /create-user
+    controller: App\Controller\UserController::createUser
 
 userList:
-    path: /user/list
-    controller: App\Controller\UserListController::actionDefault
+    path: /user-list
+    controller: App\Controller\UserController::userList
 
-userApi:
-    path: /api/v1/user
-    controller: App\AppBundle\API\v1\UserController::actionNew
+apiList:
+    path: /api-list
+    controller: App\Controller\HomepageController::apiList
 
-userCount:
+# Api
+createUserApi:
+    path: /api/v1/createUser
+    controller: App\AppBundle\API\v1\UserController::createUser
+
+userCountApi:
     path: /api/v1/userCount
-    controller: App\AppBundle\API\v1\UserController::actionUserCount
+    controller: App\AppBundle\API\v1\UserController::userCount
 
 userListApi:
     path: /api/v1/userList/{page}
-    controller: App\AppBundle\API\v1\UserController::actionUserList
+    controller: App\AppBundle\API\v1\UserController::userList
     defaults:
         page: 1
     requirements:

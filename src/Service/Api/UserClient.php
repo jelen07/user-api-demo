@@ -56,7 +56,7 @@ class UserClient
             $userData['role'] = (string) $userData['role'];
         }
 
-        $request = new Request(self::METHOD_POST, $this->client->getConfig('base_uri') . 'user', [],  Json::encode($userData, true));
+        $request = new Request(self::METHOD_POST, $this->client->getConfig('base_uri') . 'createUser', [],  Json::encode($userData, true));
 
         try {
             $response = $this->client->send($request);

@@ -29,7 +29,7 @@ class Password
      *
      * @return bool
      */
-    public function comparePasswords($password) : bool
+    public function comparePasswords($password): bool
     {
         $hash = Passwords::needsRehash($this->password) ? Passwords::hash($this->password) : $this->password;
 
@@ -39,7 +39,7 @@ class Password
     /**
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return $this->password;
     }

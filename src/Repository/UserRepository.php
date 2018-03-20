@@ -16,6 +16,10 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class UserRepository extends ServiceEntityRepository
 {
+    /**
+     * UserRepository constructor.
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, User::class);
@@ -36,7 +40,6 @@ class UserRepository extends ServiceEntityRepository
     /**
      * @param int $page
      * @param int $size
-     *
      * @return Paginator
      */
     public function getPaginator(int $page = 1, int $size = 10): Paginator

@@ -19,7 +19,6 @@ class PasswordType extends StringType
     /**
      * @param mixed $value
      * @param AbstractPlatform $platform
-     *
      * @return Password
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): Password
@@ -30,7 +29,6 @@ class PasswordType extends StringType
     /**
      * @param mixed $value
      * @param AbstractPlatform $platform
-     *
      * @return string
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): string

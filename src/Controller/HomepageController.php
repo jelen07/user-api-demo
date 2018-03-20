@@ -1,23 +1,43 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
-use Nette\Utils\FileSystem;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Parsedown as Parsedown;
-use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\RouterInterface;
 
+/**
+ * Class HomepageController
+ * @package App\Controller
+ */
 class HomepageController extends Controller
 {
-    public function actionDefault()
+    /**
+     * @return Response
+     */
+    public function default(): Response
     {
         $parser = new Parsedown();
         $parser->setSafeMode(true)
             ->setMarkupEscaped(true);
         $readme = $parser->parse(file_get_contents(__DIR__ . '/../../README.md'));
 
-        return $this->render('homepage/run.html.twig', [
+        return $this->render('homepage/default.html.twig', [
             'readme' => $readme,
         ]);
+    }
+
+    /**
+     * @return Response
+     */
+    public function apiList(RouterInterface $router): Response
+    {
+        $routes = $router->getRouteCollection();
+        dump($routes);
+
+        return $this->render('homepage/apiList.html.twig');
     }
 }

@@ -18,7 +18,6 @@ class NameType extends StringType
     /**
      * @param mixed $value
      * @param AbstractPlatform $platform
-     *
      * @return Name
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): Name
@@ -27,7 +26,9 @@ class NameType extends StringType
     }
 
     /**
-     * @inheritdoc
+     * @param mixed $value
+     * @param AbstractPlatform $platform
+     * @return string
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): string
     {
@@ -35,7 +36,7 @@ class NameType extends StringType
     }
 
     /**
-     * @inheritdoc
+     * @return string
      */
     public function getName(): string
     {

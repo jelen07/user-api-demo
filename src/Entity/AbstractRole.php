@@ -20,7 +20,7 @@ abstract class AbstractRole implements IRole
     /**
      * @return string
      */
-    public function getRoleId() : string
+    public function getRoleId(): string
     {
         return $this->id;
     }
@@ -28,7 +28,7 @@ abstract class AbstractRole implements IRole
     /**
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return $this->id;
     }

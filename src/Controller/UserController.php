@@ -10,7 +10,6 @@ use App\Entity\Password;
 use App\Entity\User;
 use App\Form\UserSignUpForm;
 use App\Service\Api\UserClient;
-use App\Service\Api\UserSystem;
 use App\Utils\FlashType;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -29,7 +28,7 @@ class UserController extends Controller
      * @param UserClient $userClient
      * @return Response
      */
-    public function actionDefault(Request $request, UserClient $userClient): Response
+    public function createUser(Request $request, UserClient $userClient): Response
     {
         $form = $this->createForm(UserSignUpForm::class, [])
             ->handleRequest($request);
@@ -60,7 +59,7 @@ class UserController extends Controller
 
                 $this->addFlash(FlashType::SUCCESS, sprintf('%s \'%s\' was successfully created.', ucfirst((string) $user->getRole()), $user->getName()));
 
-                return $this->redirectToRoute('userCreate');
+                return $this->redirectToRoute('createUser');
             } catch (UniqueConstraintViolationException $e) {
                 $form->addError(new FormError('Duplicate entry, given email is already registered.'));
             } catch (\Exception $e) {
@@ -71,5 +70,10 @@ class UserController extends Controller
         return $this->render('user/create.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    public function userList(Request $request): Response
+    {
+        return $this->render('user/list.html.twig');
     }
 }

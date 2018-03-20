@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\AppBundle\API\v1;
 
 use App\Entity\Email;
@@ -17,16 +19,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class UserController
+ * @package App\AppBundle\API\v1
+ */
 class UserController extends Controller
 {
     /**
-     * @Route("/api/v1/user")
+     * @Route("/api/v1/createUser")
      * @Method("POST")
      *
      * @param Request $request
      * @return JsonResponse
      */
-    public function actionNew(Request $request, IRoleFactory $roleFactory): JsonResponse
+    public function createUser(Request $request, IRoleFactory $roleFactory): JsonResponse
     {
         if ($request->getMethod() === Request::METHOD_GET) {
             return new JsonResponse(['Unallowed method']);
@@ -80,7 +86,7 @@ class UserController extends Controller
      *
      * @return JsonResponse
      */
-    public function actionUserCount(): JsonResponse
+    public function userCount(): JsonResponse
     {
         $userRepository = $this->getDoctrine()->getRepository(User::class);
         $count = $userRepository->getTotalCount();
@@ -97,7 +103,7 @@ class UserController extends Controller
      * @param int $page
      * @return JsonResponse
      */
-    public function actionUserList(int $page = 1): JsonResponse
+    public function userList(int $page = 1): JsonResponse
     {
         /**
          * @var $paginator Paginator

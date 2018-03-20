@@ -6,26 +6,15 @@ namespace App\Entity\Type;
 
 use App\Entity\Email;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Types\StringType;
 
 /**
  * Class EmailType
  * @package App\Entity\Type
  */
-class EmailType extends Type
+class EmailType extends StringType
 {
     const TYPE_NAME = 'email';
-
-    /**
-     * @param array $fieldDeclaration
-     * @param AbstractPlatform $platform
-     *
-     * @return string
-     */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
-    {
-        return ucfirst(self::TYPE_NAME);
-    }
 
     /**
      * @param mixed $value

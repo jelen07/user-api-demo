@@ -5,26 +5,16 @@ declare(strict_types=1);
 namespace App\Entity\Type;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Types\StringType;
 use Nette\Security\IRole;
 
 /**
  * Class RoleType
  * @package App\Entity\Type
  */
-class RoleType extends Type
+class RoleType extends StringType
 {
     const TYPE_NAME = 'role';
-    /**
-     * @param array $fieldDeclaration
-     * @param AbstractPlatform $platform
-     *
-     * @return string
-     */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
-    {
-        return ucfirst(self::TYPE_NAME);
-    }
 
     /**
      * @param mixed $value

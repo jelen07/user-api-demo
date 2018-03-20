@@ -6,26 +6,15 @@ namespace App\Entity\Type;
 
 use App\Entity\Password;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Types\StringType;
 
 /**
  * Class PasswordType
  * @package App\Entity\Type
  */
-class PasswordType extends Type
+class PasswordType extends StringType
 {
     const TYPE_NAME = 'password';
-
-    /**
-     * @param array $fieldDeclaration
-     * @param AbstractPlatform $platform
-     *
-     * @return string
-     */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
-    {
-        return ucfirst(self::TYPE_NAME);
-    }
 
     /**
      * @param mixed $value

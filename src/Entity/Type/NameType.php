@@ -6,22 +6,14 @@ namespace App\Entity\Type;
 
 use App\Entity\Name;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Types\StringType;
 
 /**
  * @inheritdoc
  */
-class NameType extends Type
+class NameType extends StringType
 {
     const TYPE_NAME = 'name';
-
-    /**
-     * @inheritdoc
-     */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
-    {
-        return ucfirst(self::TYPE_NAME);
-    }
 
     /**
      * @param mixed $value

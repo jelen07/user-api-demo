@@ -2,8 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\AdminRole;
-use App\Entity\GuestRole;
+use App\Entity\Role;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -35,8 +34,8 @@ class UserSignUpForm extends AbstractType
             ->add('role', ChoiceType::class, [
                 'choices' => [
                     /** @todo Get roles from service */
-                    new GuestRole(),
-                    new AdminRole(),
+                    new Role(Role::GUEST),
+                    new Role(Role::ADMIN),
                 ],
                 'choice_label' => function($role) {
                     /** @var IRole $role */

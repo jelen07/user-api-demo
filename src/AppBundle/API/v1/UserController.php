@@ -7,6 +7,7 @@ namespace App\AppBundle\API\v1;
 use App\Entity\Email;
 use App\Entity\Name;
 use App\Entity\Password;
+use App\Entity\Role;
 use App\Entity\Status;
 use App\Entity\User;
 use App\Exception\InvalidArgumentException;
@@ -32,7 +33,7 @@ class UserController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function createUser(Request $request, IRoleFactory $roleFactory): JsonResponse
+    public function createUser(Request $request): JsonResponse
     {
         if ($request->getMethod() === Request::METHOD_GET) {
             return new JsonResponse(['Unallowed method']);
@@ -51,7 +52,7 @@ class UserController extends Controller
                 new Name($userData['name']),
                 new Email($userData['email']),
                 new Password($userData['pass']),
-                $roleFactory->createRole($userData['role'])
+                new Role($userData['role'])
             );
 
             $em = $this->getDoctrine()->getManager();

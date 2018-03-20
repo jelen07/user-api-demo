@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Type;
 
+use App\Entity\Role;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 use Nette\Security\IRole;
@@ -23,8 +24,7 @@ class RoleType extends StringType
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): IRole
     {
-        $className = sprintf('App\\Entity\\%sRole', ucfirst($value));
-        return new $className($value);
+        return new Role($value);
     }
 
     /**

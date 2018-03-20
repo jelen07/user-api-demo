@@ -11,6 +11,7 @@
         "nette/utils": "^2.5",
         "symfony/console": "^4.0",
         "symfony/debug-pack": "^1.0",
+        "symfony/dotenv": "^4.0",
         "symfony/flex": "^1.0",
         "symfony/form": "^4.0",
         "symfony/framework-bundle": "^4.0",
@@ -23,8 +24,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.10",
-        "heroku/heroku-buildpack-php": "^132.0",
-        "symfony/dotenv": "^4.0"
+        "heroku/heroku-buildpack-php": "^132.0"
     },
     "config": {
         "preferred-install": {

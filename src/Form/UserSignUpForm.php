@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Form;
 
 use App\Entity\Role;
@@ -12,14 +14,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
- * Class TaskType
- * @package App\Form
+ * Class TaskType.
  */
 class UserSignUpForm extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -27,24 +28,24 @@ class UserSignUpForm extends AbstractType
             ->add('name', TextType::class, [
                 'attr' => [
                     'autofocus' => 'enabled',
-                ]
+                ],
             ])
             ->add('pass', PasswordType::class)
             ->add('email', EmailType::class)
             ->add('role', ChoiceType::class, [
                 'choices' => [
-                    /** @todo Get roles from service */
+                    /* @todo Get roles from service */
                     new Role(Role::GUEST),
                     new Role(Role::ADMIN),
                 ],
-                'choice_label' => function($role) {
-                    /** @var IRole $role */
-                    return ucfirst($role);
+                'choice_label' => function ($role) {
+                    /* @var IRole $role */
+                    return ucfirst((string) $role);
                 },
-                'choice_value' => function($role) {
-                    /** @var IRole $role */
+                'choice_value' => function ($role) {
+                    /* @var IRole $role */
                     return (string) $role;
-                }
+                },
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Save',

@@ -10,16 +10,16 @@ use Doctrine\DBAL\Types\StringType;
 use Nette\Security\IRole;
 
 /**
- * Class RoleType
- * @package App\Entity\Type
+ * Class RoleType.
  */
 class RoleType extends StringType
 {
     const TYPE_NAME = 'role';
 
     /**
-     * @param mixed $value
+     * @param mixed            $value
      * @param AbstractPlatform $platform
+     *
      * @return IRole
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): IRole
@@ -28,8 +28,9 @@ class RoleType extends StringType
     }
 
     /**
-     * @param mixed $value
+     * @param mixed            $value
      * @param AbstractPlatform $platform
+     *
      * @return string
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): string

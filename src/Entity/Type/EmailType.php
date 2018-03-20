@@ -9,16 +9,16 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 
 /**
- * Class EmailType
- * @package App\Entity\Type
+ * Class EmailType.
  */
 class EmailType extends StringType
 {
     const TYPE_NAME = 'email';
 
     /**
-     * @param mixed $value
+     * @param mixed            $value
      * @param AbstractPlatform $platform
+     *
      * @return Email
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): Email
@@ -27,8 +27,9 @@ class EmailType extends StringType
     }
 
     /**
-     * @param mixed $value
+     * @param mixed            $value
      * @param AbstractPlatform $platform
+     *
      * @return string
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): string

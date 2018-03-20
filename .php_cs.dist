@@ -1,19 +1,24 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-    ->in(__DIR__ . '/src')
+    ->in(__DIR__ . '/config')
     ->in(__DIR__ . '/public')
+    ->in(__DIR__ . '/src')
+    ->in(__DIR__ . '/templates')
     ->in(__DIR__ . '/tests')
 ;
 
 return PhpCsFixer\Config::create()
-    ->setUsingCache(FALSE)
+    ->setUsingCache(false)
+    ->setRiskyAllowed(true)
     ->setRules([
-        '@Symfony' => true,
-        'array_syntax' => ['syntax' => 'short'],
         '@PSR2' => true,
+        '@Symfony' => true,
+        'array_syntax' => [
+            'syntax' => 'short'
+        ],
         'lowercase_constants' => true,
-        //'declare_strict_types' => true,
+        'declare_strict_types' => true,
         'phpdoc_align' => true,
         'blank_line_after_opening_tag' => true,
         'blank_line_before_statement' => [

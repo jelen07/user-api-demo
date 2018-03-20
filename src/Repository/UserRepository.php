@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Entity\User;
@@ -18,6 +20,7 @@ class UserRepository extends ServiceEntityRepository
 {
     /**
      * UserRepository constructor.
+     *
      * @param RegistryInterface $registry
      */
     public function __construct(RegistryInterface $registry)
@@ -40,6 +43,7 @@ class UserRepository extends ServiceEntityRepository
     /**
      * @param int $page
      * @param int $size
+     *
      * @return Paginator
      */
     public function getPaginator(int $page = 1, int $size = 10): Paginator

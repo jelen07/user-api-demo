@@ -8,19 +8,20 @@ use Nette\Security\Passwords;
 use JMS\Serializer\Annotation\Type;
 
 /**
- * Class Password
- * @package App\Entity
+ * Class Password.
  */
 class Password
 {
     /**
      * @Type("string")
+     *
      * @var string
      */
     private $password;
 
     /**
      * Password constructor.
+     *
      * @param string $password
      */
     public function __construct(string $password)

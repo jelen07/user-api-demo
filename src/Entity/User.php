@@ -68,10 +68,11 @@ class User
 
     /**
      * User constructor.
-     * @param Name $name
-     * @param Email $email
+     *
+     * @param Name     $name
+     * @param Email    $email
      * @param Password $password
-     * @param IRole $role
+     * @param IRole    $role
      */
     public function __construct(Name $name, Email $email, Password $password, IRole $role)
     {
@@ -85,8 +86,6 @@ class User
 
     /**
      * @ORM\PreUpdate
-     *
-     * @return void
      */
     public function onPreUpdate(): void
     {

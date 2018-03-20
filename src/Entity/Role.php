@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use Nette\Security\IRole;
@@ -7,8 +9,8 @@ use JMS\Serializer\Annotation\Type;
 
 class Role implements IRole
 {
-    const GUEST = 'guest',
-        ADMIN = 'admin';
+    const GUEST = 'guest';
+    const ADMIN = 'admin';
 
     const ALLOWED_ROLES = [
         self::GUEST,
@@ -17,13 +19,16 @@ class Role implements IRole
 
     /**
      * @Type("string")
+     *
      * @var string
      */
     protected $id;
 
     /**
      * Role constructor.
+     *
      * @param string $id
+     *
      * @throws \Exception
      */
     public function __construct(string $id)

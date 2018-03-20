@@ -13,14 +13,13 @@ use JMS\Serializer\SerializerInterface;
 use Nette\Utils\Json;
 
 /**
- * Class UserClient
- * @package App\Service\Api
+ * Class UserClient.
  */
 class UserClient
 {
-    const METHOD_POST = \Symfony\Component\HttpFoundation\Request::METHOD_POST,
-        METHOD_GET = \Symfony\Component\HttpFoundation\Request::METHOD_GET,
-        CONFIG_BASE_URI = 'base_uri';
+    const METHOD_POST = \Symfony\Component\HttpFoundation\Request::METHOD_POST;
+    const METHOD_GET = \Symfony\Component\HttpFoundation\Request::METHOD_GET;
+    const CONFIG_BASE_URI = 'base_uri';
 
     /**
      * @var SerializerInterface
@@ -39,9 +38,10 @@ class UserClient
 
     /**
      * UserClient constructor.
+     *
      * @param bool $sandbox
      */
-    public function __construct(SerializerInterface $serializer, bool $sandbox = FALSE)
+    public function __construct(SerializerInterface $serializer, bool $sandbox = false)
     {
         $this->serializer = $serializer;
         $this->sandbox = $sandbox;
@@ -54,6 +54,7 @@ class UserClient
 
     /**
      * @param array $userData
+     *
      * @throws \Exception
      */
     public function createUser(array $userData): void
@@ -65,13 +66,13 @@ class UserClient
             $userData['role'] = (string) $userData['role'];
         }
 
-        $request = new Request(self::METHOD_POST, $this->client->getConfig(self::CONFIG_BASE_URI) . 'createUser', [],  Json::encode($userData, true));
+        $request = new Request(self::METHOD_POST, $this->client->getConfig(self::CONFIG_BASE_URI).'createUser', [], Json::encode($userData, true));
 
         try {
             $response = $this->client->send($request);
             $body = Json::decode($response->getBody());
 
-            if ($body->status === Status::STATUS_ERROR) {
+            if (Status::STATUS_ERROR === $body->status) {
                 throw new \Exception($body->message);
             }
         } catch (ServerException $e) {
@@ -81,12 +82,14 @@ class UserClient
 
     /**
      * @param int $page
+     *
      * @return array
+     *
      * @throws \Exception
      */
     public function userList(int $page = 1): array
     {
-        $request = new Request(self::METHOD_GET, $this->client->getConfig(self::CONFIG_BASE_URI) . 'userList' . $this->getPagePath($page));
+        $request = new Request(self::METHOD_GET, $this->client->getConfig(self::CONFIG_BASE_URI).'userList'.$this->getPagePath($page));
         try {
             $response = $this->client->send($request);
             $users = [];
@@ -100,7 +103,6 @@ class UserClient
             }
 
             return $users;
-
         } catch (ServerException $e) {
             throw new \Exception($e->getMessage());
         }
@@ -108,6 +110,7 @@ class UserClient
 
     /**
      * @param int $page
+     *
      * @return string
      */
     private function getPagePath(int $page): string

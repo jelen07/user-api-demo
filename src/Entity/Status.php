@@ -7,13 +7,12 @@ namespace App\Entity;
 use Nette\Utils\Json;
 
 /**
- * Class Status
- * @package App\Entity
+ * Class Status.
  */
 class Status
 {
-    const STATUS_SUCCESS = 'success',
-        STATUS_ERROR = 'error';
+    const STATUS_SUCCESS = 'success';
+    const STATUS_ERROR = 'error';
 
     /**
      * @var string
@@ -27,6 +26,7 @@ class Status
 
     /**
      * Status constructor.
+     *
      * @param string $status
      * @param string $message
      */

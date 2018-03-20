@@ -11,10 +11,8 @@ use App\Entity\Role;
 use App\Entity\Status;
 use App\Entity\User;
 use App\Exception\InvalidArgumentException;
-use App\Service\IRoleFactory;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\Tools\Pagination\Paginator;
-use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerInterface;
 use Nette\Utils\Json;
 use Nette\Utils\JsonException;
@@ -24,8 +22,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class UserController
- * @package App\AppBundle\API\v1
+ * Class UserController.
  */
 class UserController extends Controller
 {
@@ -36,11 +33,12 @@ class UserController extends Controller
      * @Method("POST")
      *
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function createUser(Request $request): JsonResponse
     {
-        if ($request->getMethod() === Request::METHOD_GET) {
+        if (Request::METHOD_GET === $request->getMethod()) {
             return new JsonResponse(['Unallowed method']);
         }
 
@@ -79,6 +77,7 @@ class UserController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function actionDelete(Request $request): JsonResponse
@@ -107,18 +106,19 @@ class UserController extends Controller
      * @Method("POST")
      *
      * @param int $page
+     *
      * @return Response
      */
     public function userList(int $page = 1, SerializerInterface $serializer): Response
     {
         /**
-         * @var $paginator Paginator
+         * @var Paginator
          */
         $paginator = $this->getDoctrine()->getRepository(User::class)->getPaginator($page, self::PAGE_SIZE);
         $count = count($paginator);
 
         /**
-         * @var $user User
+         * @var User
          */
         $users = [];
         foreach ($paginator as $user) {
@@ -140,6 +140,7 @@ class UserController extends Controller
      * This method SHOULD NOT be called in production.
      *
      * @param SerializerInterface $serializer
+     *
      * @return Response
      */
     public function userListAll(SerializerInterface $serializer): Response

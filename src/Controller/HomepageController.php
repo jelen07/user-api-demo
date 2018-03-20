@@ -10,8 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 
 /**
- * Class HomepageController
- * @package App\Controller
+ * Class HomepageController.
  */
 class HomepageController extends Controller
 {
@@ -23,7 +22,7 @@ class HomepageController extends Controller
         $parser = new Parsedown();
         $parser->setSafeMode(true)
             ->setMarkupEscaped(true);
-        $readme = $parser->parse(file_get_contents(__DIR__ . '/../../README.md'));
+        $readme = $parser->parse(file_get_contents(__DIR__.'/../../README.md'));
 
         return $this->render('homepage/default.html.twig', [
             'readme' => $readme,

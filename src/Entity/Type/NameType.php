@@ -9,15 +9,16 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 
 /**
- * @inheritdoc
+ * {@inheritdoc}
  */
 class NameType extends StringType
 {
     const TYPE_NAME = 'name';
 
     /**
-     * @param mixed $value
+     * @param mixed            $value
      * @param AbstractPlatform $platform
+     *
      * @return Name
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): Name
@@ -26,8 +27,9 @@ class NameType extends StringType
     }
 
     /**
-     * @param mixed $value
+     * @param mixed            $value
      * @param AbstractPlatform $platform
+     *
      * @return string
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): string

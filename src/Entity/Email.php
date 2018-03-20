@@ -9,19 +9,20 @@ use JMS\Serializer\Annotation\Type;
 use Nette\Utils\Validators;
 
 /**
- * Class Email
- * @package App\Entity
+ * Class Email.
  */
 class Email
 {
     /**
      * @Type("string")
+     *
      * @var string
      */
     private $email;
 
     /**
      * Email constructor.
+     *
      * @param string $email
      */
     public function __construct(string $email)

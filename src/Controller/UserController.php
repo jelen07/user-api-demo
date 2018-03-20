@@ -12,21 +12,20 @@ use App\Form\UserSignUpForm;
 use App\Service\Api\UserClient;
 use App\Utils\FlashType;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Nette\Utils\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class UserController
- * @package App\Controller
+ * Class UserController.
  */
 class UserController extends Controller
 {
     /**
-     * @param Request $request
+     * @param Request    $request
      * @param UserClient $userClient
+     *
      * @return Response
      */
     public function createUser(Request $request, UserClient $userClient): Response
@@ -35,7 +34,6 @@ class UserController extends Controller
             ->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $userData = $form->getData();
 
             try {
@@ -57,7 +55,6 @@ class UserController extends Controller
                 $em->persist($user);
                 // $em->flush();
 
-
                 $this->addFlash(FlashType::SUCCESS, sprintf('%s \'%s\' was successfully created.', ucfirst((string) $user->getRole()), $user->getName()));
 
                 return $this->redirectToRoute('createUser');
@@ -74,8 +71,9 @@ class UserController extends Controller
     }
 
     /**
-     * @param int $page
+     * @param int        $page
      * @param UserClient $userClient
+     *
      * @return Response
      */
     public function userList(int $page = 1, UserClient $userClient): Response

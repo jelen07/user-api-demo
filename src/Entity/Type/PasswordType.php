@@ -9,16 +9,16 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 
 /**
- * Class PasswordType
- * @package App\Entity\Type
+ * Class PasswordType.
  */
 class PasswordType extends StringType
 {
     const TYPE_NAME = 'password';
 
     /**
-     * @param mixed $value
+     * @param mixed            $value
      * @param AbstractPlatform $platform
+     *
      * @return Password
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): Password
@@ -27,8 +27,9 @@ class PasswordType extends StringType
     }
 
     /**
-     * @param mixed $value
+     * @param mixed            $value
      * @param AbstractPlatform $platform
+     *
      * @return string
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): string

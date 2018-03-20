@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Utils;
 
 /**
- * Class FlashType
- * @package App\Utils
+ * Class FlashType.
  */
 class FlashType
 {
-    const NOTICE = 'notice',
-        SUCCESS = 'success';
+    const NOTICE = 'notice';
+    const SUCCESS = 'success';
 }

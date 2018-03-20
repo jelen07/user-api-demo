@@ -8,19 +8,20 @@ use App\Exception\InvalidArgumentException;
 use JMS\Serializer\Annotation\Type;
 
 /**
- * Class Name
- * @package App\Entity
+ * Class Name.
  */
 class Name
 {
     /**
      * @Type("string")
+     *
      * @var string
      */
     private $name;
 
     /**
      * Name constructor.
+     *
      * @param string $name
      */
     public function __construct(string $name)
@@ -32,9 +33,6 @@ class Name
         $this->name = $name;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function __toString(): string
     {
         return $this->name;

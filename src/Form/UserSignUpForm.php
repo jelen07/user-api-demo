@@ -51,7 +51,7 @@ class UserSignUpForm extends AbstractType
             ->add('save', SubmitType::class, [
                 'label' => 'Save',
                 'attr' => [
-                    'class' => 'btn btn-lg btn-primary btn-block',
+                    'class' => 'btn btn-lg btn-dark btn-block',
                 ],
             ])
         ;

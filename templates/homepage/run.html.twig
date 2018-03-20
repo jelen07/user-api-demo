@@ -2,10 +2,6 @@
 
 {% block body %}
 
-    <h1>{% block title %}Helo Word!{% endblock %}</h1>
-    <ul>
-        <li><a href="{{ path('userCreate') }}">Create New User</a></li>
-        <li><a href="{{ path('userList') }}">Browse Users</a></li>
-    </ul>
+    {{ readme|raw }}
 
 {% endblock %}

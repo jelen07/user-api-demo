@@ -21,7 +21,7 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="name", length=25)
+     * @ORM\Column(type="name", length=255)
      * @Type("App\Entity\Name")
      *
      * @var string
@@ -37,7 +37,7 @@ class User
     private $email;
 
     /**
-     * @ORM\Column(type="password", length=255)
+     * @ORM\Column(type="password", length=60)
      * @Type("App\Entity\Password")
      *
      * @var string

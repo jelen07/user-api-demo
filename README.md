@@ -61,7 +61,7 @@ For further information see [:blue_book: Documentation](docs/index.md).
 - Create components from GUI parts (navigation, form, ...)
 - Separate app into the two bundles
 - Write some tests
-- Add user fixtures
+- ~~Add user fixtures~~
 
 Note that the demo application is running in `dev` mode as well as that the database restarts after each installation. This is done for test / revision purposes only and must not be used in production. 
 

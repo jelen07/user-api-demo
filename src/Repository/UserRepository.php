@@ -55,24 +55,11 @@ class UserRepository extends ServiceEntityRepository
             throw new InvalidArgumentException('The \'size\' parameter must be a positive integer.');
         }
 
-        $dql = 'SELECT u FROM App\Entity\User u ORDER BY u.id';
+        $dql = 'SELECT u FROM App\Entity\User u ORDER BY u.created DESC, u.id';
         $query = $this->getEntityManager()->createQuery($dql)
             ->setFirstResult(($page - 1) * $size)
             ->setMaxResults($size);
 
         return new Paginator($query);
     }
-
-    /*
-    public function findBySomething($value)
-    {
-        return $this->createQueryBuilder('u')
-            ->where('u.something = :value')->setParameter('value', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
 }

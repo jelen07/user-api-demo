@@ -8,6 +8,9 @@
         "cleardb:ignite"
     ],
     "env": {
-      "APP_ENV": "dev"
+        "HEROKU": "TRUE"
+    },
+    "scripts": {
+        "postdeploy": "./heroku_postdeploy.sh"
     }
 }

@@ -14,10 +14,6 @@ userList:
     requirements:
         page: '\d+'
 
-apiList:
-    path: /api-list
-    controller: App\Controller\HomepageController::apiList
-
 # Api
 createUserApi:
     path: /api/v1/createUser

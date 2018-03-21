@@ -22,9 +22,6 @@
                     <li class="nav-item {{ app.request.get('_route') == 'userList' ? 'active' }}">
                         <a class="nav-link" href="{{ path('userList') }}">Browse Users</a>
                     </li>
-                    <li class="nav-item {{ app.request.get('_route') == 'apiList' ? 'active' }}">
-                        <a class="nav-link" href="{{ path('apiList') }}">API</a>
-                    </li>
                 </ul>
             </div>
         </nav>

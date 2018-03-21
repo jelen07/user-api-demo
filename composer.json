@@ -54,7 +54,8 @@
             "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "cp .env.dist .env",
+            "composer dump-autoload --optimize",
+            "./heroku_postdeploy.sh",
             "@auto-scripts"
         ],
         "post-update-cmd": [

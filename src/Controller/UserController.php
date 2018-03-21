@@ -16,6 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class UserController.
@@ -23,6 +24,8 @@ use Symfony\Component\HttpFoundation\Response;
 class UserController extends Controller
 {
     /**
+     * @Route("/create-user", name="createUser")
+     *
      * @param Request    $request
      * @param UserClient $userClient
      *
@@ -71,6 +74,8 @@ class UserController extends Controller
     }
 
     /**
+     * @Route("/user-list/{page}", name="userList", requirements={"page"="\d+"}, defaults={"page"="1"})
+     *
      * @param int        $page
      * @param UserClient $userClient
      *

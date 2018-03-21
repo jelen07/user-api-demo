@@ -7,6 +7,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Parsedown as Parsedown;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class HomepageController.
@@ -14,6 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 class HomepageController extends Controller
 {
     /**
+     * @Route("/", name="index")
+     *
      * @return Response
      */
     public function default(): Response

@@ -20,6 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class UserController.
@@ -30,7 +31,6 @@ class UserController extends Controller
 
     /**
      * @Route("/api/v1/createUser")
-     * @Method("POST")
      *
      * @param Request $request
      *
@@ -87,7 +87,6 @@ class UserController extends Controller
 
     /**
      * @Route("/api/v1/userCount")
-     * @Method("POST")
      *
      * @return Response
      */
@@ -103,7 +102,6 @@ class UserController extends Controller
 
     /**
      * @Route("/api/v1/userList/{page}", requirements={"page"="\d+"})
-     * @Method("POST")
      *
      * @param int $page
      *

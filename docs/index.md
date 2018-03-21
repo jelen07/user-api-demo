@@ -14,7 +14,7 @@
 | password      | user password  | YES      | string
 | role          | admin or quest | YES      | string
 
-#### Request
+#### Sample Request
 ```bash
 curl -v -N http://localhost:8000/api/v1/createUser \
 -X "POST" \
@@ -28,7 +28,7 @@ curl -v -N http://localhost:8000/api/v1/createUser \
 }'
 ```
 
-#### Response
+#### Sample response
 ```json
 {
     "status": "success",
@@ -41,7 +41,7 @@ curl -v -N http://localhost:8000/api/v1/createUser \
 ### Request
 `GET /api/v1/userListAll` for all users. If you want pagination use `GET /api/v1/userList[/<page>]` 
  
-#### Request
+#### Sample request
 ```bash
 curl -v -N http://localhost:8000/api/v1/userList \
 -X "GET" \
@@ -49,7 +49,7 @@ curl -v -N http://localhost:8000/api/v1/userList \
 -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Sample response
 ```json
 {
     "count": 1,
@@ -73,5 +73,24 @@ curl -v -N http://localhost:8000/api/v1/userList \
             "updated": "2018-03-21T02:05:26+01:00"
         }
     ]
+}
+```
+## User Count
+
+### Request
+`GET /api/v1/userCount`
+
+#### Sample request
+```bash
+curl -v -N http://localhost:8000/api/v1/userCount \
+-X "GET" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json"
+```
+
+#### Sample response
+```json
+{
+    "count": 1
 }
 ```

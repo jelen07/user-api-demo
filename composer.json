@@ -11,6 +11,7 @@
         "jms/serializer-bundle": "^2.3",
         "nette/security": "^2.4",
         "nette/utils": "^2.5",
+        "sensio/framework-extra-bundle": "^5.1",
         "symfony/console": "^4.0",
         "symfony/debug-pack": "^1.0",
         "symfony/dotenv": "^4.0",

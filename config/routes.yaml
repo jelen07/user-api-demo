@@ -1,23 +1,10 @@
-index:
-    path: /
-    controller: App\Controller\HomepageController::default
-
-createUser:
-    path: /create-user
-    controller: App\Controller\UserController::createUser
-
-userList:
-    path: /user-list/{page}
-    controller: App\Controller\UserController::userList
-    defaults:
-        page: 1
-    requirements:
-        page: '\d+'
-
-# Api
 createUserApi:
     path: /api/v1/createUser
     controller: App\AppBundle\API\v1\UserController::createUser
+
+userListAllApi:
+    path: /api/v1/userListAll
+    controller: App\AppBundle\API\v1\UserController::userListAll
 
 userCountApi:
     path: /api/v1/userCount
@@ -30,11 +17,3 @@ userListApi:
         page: 1
     requirements:
         page: '\d+'
-
-userListAllApi:
-    path: /api/v1/userListAll
-    controller: App\AppBundle\API\v1\UserController::userListAll
-
-#api:
-#    resource: '@AppBundle/Controller/'
-#    type: annotation
